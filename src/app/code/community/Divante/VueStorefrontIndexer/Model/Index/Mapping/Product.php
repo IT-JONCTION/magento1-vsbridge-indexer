@@ -139,6 +139,26 @@ class Divante_VueStorefrontIndexer_Model_Index_Mapping_Product extends AbstractM
                     'name' => ['type' => FieldInterface::TYPE_TEXT],
                 ],
             ],
+            "attributes_metadata"=> [
+                "properties"=> [
+                    "id"=> ["type"=> "integer"],
+                    "attribute_id"=> ["type"=> "integer"],
+                    "default_frontend_label"=> ["type"=> "text"],
+                    "is_visible_on_front"=> ["type"=> "text"],
+                    "is_visible" => ["type"=> "boolean"],
+                    "frontend_input"=> ["type"=> "text"],
+                    "is_user_defined"=> ["type"=> "boolean"],
+                    "is_comparable"=> ["type"=> "text"],
+                    "attribute_code"=> ["type"=> "text"],
+                    "options"=> [
+                        "properties"=> [
+                            "value"=> ["type"=> "text"],
+                            "label"=> ["type"=> "text"],
+                            "sort_order"=> ["type"=> "integer"],
+                        ]
+                    ]
+                ],
+            ],
             'tier_prices' => [
                 'properties' => [
                     'customer_group_d' => ['type' => FieldInterface::TYPE_INTEGER],
