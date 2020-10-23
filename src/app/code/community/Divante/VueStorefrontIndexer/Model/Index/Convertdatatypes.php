@@ -55,6 +55,14 @@ class Divante_VueStorefrontIndexer_Model_Index_Convertdatatypes
                     }
                 }
 
+                if (isset($indexData['attributes_metadata'])) {
+                    foreach ($indexData['attributes_metadata'] as $index => $attribute) {
+                        $attribute = $this->convertAttributeMeta($attribute, $mappingProperties);
+                        $indexData['attributes_metadata'][$index] = $attribute;
+                    }
+                }
+die();
+
                 $docs[$docId] = $indexData;
             }
         }
@@ -107,6 +115,37 @@ class Divante_VueStorefrontIndexer_Model_Index_Convertdatatypes
         $category['children_data'] = $childrenData;
 
         return $category;
+    }
+
+
+    protected function convertAttributeMeta(array $attribute_meta, $mappingProperties)
+    {        
+
+        foreach ($attribute_meta as $key => $attribute_data) {
+            if($key !== 'options'){
+                $attribute_meta[$key] = $this->convert($attribute_data,  $mappingProperties['attributes_metadata']['properties']);
+            } else {
+                $attribute_meta[$key] = $this->convertOptions($attribute_data,  $mappingProperties['attributes_metadata']['properties']['options']['properties']);
+            }
+        }
+
+        return $attribute_meta;
+    }
+
+    protected function convertOptions(array $indexData, array $mappingProperties)
+    {
+        foreach ($mappingProperties as $fieldKey => $options) {
+            if (isset($options['type'])) {
+                $type = $this->getCastType($options['type']);
+
+                if (is_array($indexData)) {
+                    foreach ($indexData as $key => $value) {
+                        settype($indexData[$key][$fieldKey], $type);
+                    }
+                } 
+            }
+        }
+        return $indexData;
     }
 
     /**
