@@ -140,21 +140,22 @@ class Divante_VueStorefrontIndexer_Model_Index_Mapping_Product extends AbstractM
                 ],
             ],
             "attributes_metadata"=> [
+                'type' => 'nested',
                 "properties"=> [
-                    "id"=> ["type"=> "integer"],
-                    "attribute_id"=> ["type"=> "integer"],
-                    "default_frontend_label"=> ["type"=> "text"],
-                    "is_visible_on_front"=> ["type"=> "text"],
-                    "is_visible" => ["type"=> "boolean"],
-                    "frontend_input"=> ["type"=> "text"],
-                    "is_user_defined"=> ["type"=> "boolean"],
-                    "is_comparable"=> ["type"=> "text"],
-                    "attribute_code"=> ["type"=> "text"],
+                    "id"=> ["type"=> FieldInterface::TYPE_LONG],
+                    "attribute_id"=> ["type"=> FieldInterface::TYPE_LONG],
+                    "default_frontend_label"=> ["type"=> FieldInterface::TYPE_LONG],
+                    "is_visible_on_front"=> ["type"=> FieldInterface::TYPE_LONG],
+                    "is_visible" => ["type"=> FieldInterface::TYPE_BOOLEAN],
+                    "frontend_input"=> ["type"=> FieldInterface::TYPE_LONG],
+                    "is_user_defined"=> ["type"=> FieldInterface::TYPE_BOOLEAN],
+                    "is_comparable"=> ["type"=> FieldInterface::TYPE_LONG],
+                    "attribute_code"=> ["type"=> FieldInterface::TYPE_LONG],
                     "options"=> [
                         "properties"=> [
-                            "value"=> ["type"=> "text"],
-                            "label"=> ["type"=> "text"],
-                            "sort_order"=> ["type"=> "integer"],
+                            "value"=> ["type"=> FieldInterface::TYPE_TEXT],
+                            "label"=> ["type"=> FieldInterface::TYPE_TEXT],
+                            "sort_order"=> ["type"=> FieldInterface::TYPE_LONG],
                         ]
                     ]
                 ],
